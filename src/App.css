@@ -11,13 +11,13 @@
 }
 
 
-#root{
+/* #root{
   background: linear-gradient(#e66465, #9198e5);
-}
+} */
 
 section{
   min-height: 100vh;
-  padding: 8rem 9% 2rem;
+  padding: 1rem 9% 2rem;
 }
 
 .heading{
@@ -41,8 +41,9 @@ section{
   padding: .8rem .8rem .8rem .8rem;
   font-size: 1.5rem;
   background: transparent;
-  color: black;
+  color: rgb(0, 0, 0);
   margin: 1rem .9rem .9rem 1rem;
+  background: linear-gradient(#dbcfcf, #abb2d6);
 }
 
 .btns{
@@ -54,14 +55,14 @@ section{
 
 .btns button{
   background: #d84d4d;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   border-radius: 1.8rem;
   padding: .2rem .2rem .2rem .2rem;
   cursor: pointer;
 }
 
 .output{
-  font-size: 2rem;
+  font-size: 1.5rem;
   margin: 1rem 0 0 0;
   padding: 0 0 0 2.5rem;
 }

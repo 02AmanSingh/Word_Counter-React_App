@@ -2,20 +2,19 @@
 import './App.css';
 import About from './Components/About';
 import Alert from './Components/Alert';
-// import Navbar from './Components/Navbar';
+import Navbar from './Components/Navbar';
 import WordCount from './Components/WordCount';
 import React, { useState } from 'react';
 import {
-  BrowserRouter as Router,
-  Switch,
+  BrowserRouter,
+  Routes,
   Route,
-  Link,
 } from "react-router-dom";
 
 function App() {
 
   const [mode, setmode] = useState('light');
-  const [txt, setTxt] = useState('light mode enabled');
+  const [txt, setTxt] = useState('Light Mode Enabled');
   const [myStyle, setStyle] = useState({
     color: 'black',
   })
@@ -34,7 +33,7 @@ function App() {
   const toggleMode = () => {
     if (mode === 'light') {
       setmode('dark');
-      setTxt('dark mode enabled');
+      setTxt('Dark Mode Enabled');
       document.body.style.backgroundColor = 'grey';
       showAlert("Dark mode has been enabled", 'Success');
       setStyle({
@@ -43,7 +42,7 @@ function App() {
     }
     else {
       setmode('light');
-      setTxt(' light mode enabled');
+      setTxt(' Light Mode Enabled');
       document.body.style.backgroundColor = 'white';
       showAlert('Light mode has been enabled', 'Success');
       setStyle({
@@ -55,20 +54,20 @@ function App() {
   return (
     <>
 
-      <Router>
-        {/* <Navbar title='Navbar' mode={mode} toggleMode={toggleMode} txt={txt} myStyle={myStyle} /> */}
+      <BrowserRouter>
+        <Navbar title='Navbar' mode={mode} toggleMode={toggleMode} txt={txt} myStyle={myStyle} />
         <Alert alert={alert} />
         <div className="container">
-          <Switch>
+          <Routes>
             <Route path='/'>
-              <WordCount heading='Word Counter' />
+              <WordCount heading='Word Counter' /*showAlert='showAlert' mode={mode}*/ />
             </Route>
-            <Route path='/About'>
-              <About />
+            <Route path='/about'>
+              <About/>
             </Route>
-          </Switch>
+          </Routes>
         </div>
-      </Router>
+      </BrowserRouter>
 
     </>
   );

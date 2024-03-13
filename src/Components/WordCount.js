@@ -16,6 +16,8 @@ export default function WordCount(props) {
     let text = document.getElementById('textbox1');
     text.select();
     navigator.clipboard.writeText(text.value);
+    document.getSelection().removeAllRanges();
+    // props.showAlert("Text is Copied.", "Success");
   }
 
   const toClear=()=>{
@@ -40,24 +42,24 @@ export default function WordCount(props) {
       <section className="container">
         <div className="container mb-3">
           <div className="heading">
-            <h1 className='mb-3'>{props.heading}</h1>
+            <h1 className='mb-1'>{props.heading}</h1>
           </div>
           <div className="text-box">
-            <textarea name="Text" id="textbox1" value={text} onChange={handleOnChange} cols="100" rows="6" placeholder='Enter text here!'></textarea>
+            <textarea name="Text" id="textbox1" value={text} onChange={handleOnChange} cols="100" rows="5" placeholder='Enter text here!'></textarea>
           </div>
         </div>
 
-        <div className="container btns my-3">
-          <button className='btn btn-primary' onClick={toUpper}>To Upper Case</button>
-          <button className='btn btn-primary' onClick={toLower}>To Lower Case</button>
-          <button className='btn btn-primary' onClick={toCopy}>Copy Text</button>
-          <button className='btn btn-primary' onClick={toClear}>Clear</button>
-          <button className='btn btn-primary' onClick={extraSpace}>Remove Extra Spaces</button>
+        <div className="container btns my-2">
+          <button disabled={text.length === 0} className='btn btn-primary' onClick={toUpper}>To Upper Case</button>
+          <button disabled={text.length === 0} className='btn btn-primary' onClick={toLower}>To Lower Case</button>
+          <button disabled={text.length === 0} className='btn btn-primary' onClick={toCopy}>Copy Text</button>
+          <button disabled={text.length === 0} className='btn btn-primary' onClick={toClear}>Clear</button>
+          <button disabled={text.length === 0} className='btn btn-primary' onClick={extraSpace}>Remove Extra Spaces</button>
         </div>
 
         <div className="container output">
 
-          <p>{text.split(" ").length} words & {text.length} characters.</p>
+          <p>{text.split(" ").filter((element)=>{return element.length !== 0}).length} words & {text.length} characters.</p>
 
         </div>
       </section>
